@@ -1,0 +1,56 @@
+<template>
+  <form class="was-validated">
+  <div class="card" style="padding: 1%;">
+    <div class="card-header text-white bg-primary">
+      User
+    </div>
+    <div class="card-body" >
+      <form role="form">
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="validationServerfirstname">First Name</label>
+          <div class="col-md-9  has-validation">
+            <input type="text" placeholder="first name"  style="margin: 1px;" id="validationServerfirstname" class="form-control"  value.bind="user.FirstName" required>
+            <div class="invalid-feedback">Please feel The First Name field.</div>    
+         </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="validationServerLastname">Last Name</label>
+          <div class="col-md-9  has-validation">
+            <input type="text" placeholder="last name" style="margin: 1px;" id="validationServerLastname" class="form-control " value.bind="user.LastName" required>
+            <div class="invalid-feedback">Please feel The Last Name field.</div>    
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="validationServerAge">Age</label>
+          <div class="col-md-9">
+            <input validate type="number" min="18" placeholder="Age" style="margin: 1px;" id="validationServerAge" class="form-control" value.bind="user.Age" required>
+            <div class="invalid-feedback">Please feel The Age field and it have to be at least 18.</div>    
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="validationServerEmail">Email</label>
+          <div class="col-md-9">
+            <input type="email" placeholder="email" style="margin: 1px;" id="validationServerEmail" class="form-control" value.bind="user.Email" required>
+            <div class="invalid-feedback">Please feel The Email field.</div>    
+          </div>
+        </div>
+        <hr>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label">Address</label>
+          <div class="col-md-9">
+            <input type="number" placeholder="Postal Code" style="margin: 1px;" class="form-control" value.bind="code" required>
+            <input type="text" placeholder="Street" style="margin: 1px;" class="form-control" value.bind="street" required>
+            <input type="text" placeholder="House Number" style="margin: 1px;" class="form-control" value.bind="house" required>
+          </div>
+        </div>
+      </form>
+        <button class="btn btn-success float-left" type="reset" click.delegate="reset()" disabled.bind="!canReset">Reset</button>
+        <button class="btn btn-success float-left" type="submit" click.delegate="save()" disabled.bind="!canSave">Save</button>
+    </div>
+  </div>
+</form>
+</template>

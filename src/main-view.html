@@ -1,0 +1,43 @@
+<template>
+  <div class="contianer">
+    <div class="row">
+      <div class="col-sm">
+        <h3>User Info</h3>
+        <ul>
+          <li>
+            <labe>First Name:</labe>
+            <span>${user.FirstName}</span>
+          </li>
+          <li>
+            <labe>Last Name:</labe>
+            <span>${user.LastName}</span>
+          </li>
+          <li>
+            <labe>Age:</labe>
+            <span>${user.Age}</span>
+          </li>
+          <li>
+            <labe>Email:</labe>
+            <span>${user.Email}</span>
+          </li>
+          <li>
+            <labe>Address:</labe>
+            <span>${user.Address}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm">
+        <h3>User Assets</h3>
+        <ul>
+          <li style="margin: 1%;" repeat.for="asset of doneAssets">
+            <span> ${asset.id} </span>
+            <span> </span>
+            <span> ${asset.symbol} </span>
+            <span> </span>
+            <span> ${asset.name} </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

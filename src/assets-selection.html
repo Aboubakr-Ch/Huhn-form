@@ -1,0 +1,34 @@
+<template>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h3>List of Available Assets</h3>
+      <ul>
+      <li style="margin: 1%;" repeat.for="asset of assets.data">
+        <button class="btn btn-primary"  click.trigger="AddSelected(asset)">Add</button>
+        <span> ${asset.id} </span>
+        <span>|</span>
+        <span> ${asset.symbol} </span>
+        <span>-</span>
+        <span> ${asset.name} </span>
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm">
+    <h3>List of Selected Assets</h3>
+    <ul>
+      <li style="margin: 1%;" repeat.for="asset of doneAssets">
+        <button class="btn btn-primary" type="submit" click.trigger="removeSelected(asset)">remove</button>
+        <span> ${asset.id} </span>
+        <span>|</span>
+        <span> ${asset.symbol} </span>
+        <span>-</span>
+        <span> ${asset.name} </span>
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>
+  <button class="btn btn-success float-left" type="reset" click.delegate="reset()" disabled.bind="!can">Reset</button>
+  <button class="btn btn-success float-left" type="submit" click.delegate="Submit()" disabled.bind="!can" >Submit</button>
+</template>
