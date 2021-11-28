@@ -1,8 +1,6 @@
-// import {HttpClient} from 'aurelia-http-client';
 import{HttpClient, json} from'aurelia-fetch-client'
 import {Router} from 'aurelia-router';
 import {inject} from 'aurelia-framework';
-import { parse } from 'path/posix';
  let client = new HttpClient();
 
  class Asset {
@@ -30,15 +28,13 @@ class User {
     this.getAssets();
     this.router = router;   
 }
-AddSelected(asset){
-//   let vaa = asset;
-//  let uniqueArray = this.doneAssets.filter(function(vaa) {
-//   return this.doneAssets.indexOf(vaa) == vaa;
-// })
-// console.log(uniqueArray)
-this.doneAssets.push(asset);
 
+AddSelected(asset){
+const result = this.doneAssets.filter(word => asset === word);
+if(result.length >0) return false;
+this.doneAssets.push(asset);
 }
+ 
 removeSelected(asset){
   let index = this.doneAssets.indexOf(asset);
   if (index !== -1) {
@@ -49,15 +45,15 @@ Submit(){
   let id = location.pathname.split("/")[2];
   this.user.Assets = this.doneAssets;
   this.user.Id = Number.parseInt(id);
-  client.fetch('https://localhost:5001/api/users', {
+  console.log(this.user)
+  client.fetch(`https://localhost:5001/api/users/${id}`,{
     method: 'put',
-    body: json(this.user) })
+    body:JSON.stringify(this.user)})
     .then(response => response.json())  
     .then(data =>{
-      this.router.navigate('Main/'+data.id);
+      this.router.navigate('Main/'+id);
     } )    
     .catch(error => {alert(error);});
-  this.router.navigateToRoute('Main');
 }
 getAssets(){
   return client.fetch('https://api.coincap.io/v2/assets')
